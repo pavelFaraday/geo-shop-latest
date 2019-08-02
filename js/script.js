@@ -1,6 +1,7 @@
 
-  $(document).ready(function(){
-      $('#checkAll').click(function(){
+    // for Mass-Delete. JS
+    $(document).ready(function(){
+        $('#checkAll').click(function(){
          if(this.checked){
              $('.checkbox').each(function(){
                 this.checked = true;
@@ -10,7 +11,7 @@
                 this.checked = false;
              });
          } 
-      });
+    });
 
 
     $('#delete').click(function(){
@@ -18,19 +19,17 @@
        if($('input:checkbox:checked').length > 0){
           $('input:checkbox:checked').each(function(){
               dataArr.push($(this).attr('id'));
-              $(this).closest('tr').remove();   
+              $(this).closest('tr').remove();     // აქ class უნდა ჩაჯდეს მაგ: .class
           });
           sendResponse(dataArr)
        }else{
          alert('No record selected ');
        }
-
     });  
 
 
 
-    // for Mass Delete
-
+    // for Mass Delete. AJAX
     function sendResponse(dataArr){
         $.ajax({
             type    : 'post',
@@ -43,30 +42,32 @@
                       alert(errResponse);
                       }                     
         });
+      }
+    });
+
+
+
+
+
+
+
+    // for SPECIAL ATTRIBUTE with helpfull info. AJAX
+    function fetch_select (val){
+         $.ajax({
+            type: 'post',
+            url: 'create.php',
+            datatype:'json',
+            data: { option:val },
+            success: function (response) {
+                $('#print-ajax').html(response);
+            }
+        });
     }
 
-  });
 
 
 
-
-
-  // for special attribute with helpfull info
-
-        function fetch_select (val){
-            $.ajax({
-                type: 'post',
-                url: 'create.php',
-                datatype:'json',
-                data: { option:val },
-                success: function (response) {
-                    $('#print-ajax').html(response);
-                }
-            });
-        }
-
-
-//--------------------------------------------------------------------------
+    // for SPECIAL ATTRIBUTE with helpfull info. JS
 
 $('#inputGroupSelect01').on('change', function(){
 
