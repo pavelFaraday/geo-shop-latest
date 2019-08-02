@@ -52,50 +52,40 @@ try {
 <!-- ==================================================== -->
 
 
-          <table class="table table-bordered table-striped">
-
-                <thead>
-                    <tr class="bg-warning">
-                        <th>Del</th>
-                        <th>SKU</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Characteristics</th>
-                        <th>Image</th>
-                    </tr>
-                </thead>
-            <tbody>
+          <div class="row">
                 
             <?php if ($result->rowCount() > 0) : ?>
                 <?php foreach ($result as $product) : ?>
+
+                    <div class="col-md-3 ajax-del">
+                      <div class="card">
                     
-                    <tr>
-                        <td>
-                            <input class="checkbox" type="checkbox" id="<?php echo htmlspecialchars ($product['id']) ?>" name="id[]">
-                        </td>
 
-                        <td><?= ($product['barcode'])?></td>
-                        <td><?= htmlspecialchars ($product['name'])?></td>
-                        <td>$<?= number_format ($product['price'], 2) ?></td>
+                        <a href="#"><img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>" class="card-img-top"></a>
 
-                        <td>
-                            <?= htmlspecialchars ($product['weight']) ?>
-                            <?= htmlspecialchars ($product['size']) ?>
-                            <?= htmlspecialchars ($product['height']) ?><?= htmlspecialchars ($product['width']) ?><?= htmlspecialchars ($product['length']) ?>
-                        </td>
+                        <div class="card-body text-center">
 
-                        <td>
-                            <a href="#"><img src="<?= $product['image'] ?>" height="auto" width="100"  alt="<?= $product['name'] ?> class="card-img-top"></a>
-                        </td>
+                              <p class="card-text">#<?=$product  ['barcode'] ?></p>
+                              <h5 class="card-title text-danger font-weight-bold"><?= $product  ['name'] ?></h5>
+                              <p>$<?= number_format($product  ['price'], 2) ?></p>
 
+                              <p class="card-text"><?=$product ['weight'] ?></p>
+                              <p class="card-text"><?=$product ['size'] ?></p>
+                              <p class="card-text"><?=$product ['height'] ?></p>
+                              <p class="card-text"><?=$product ['width'] ?></p>
+                              <p class="card-text"><?=$product ['length'] ?></p> 
+
+                              <input class="checkbox m-2" type="checkbox" id="<?php echo $product['id'] ?>" name="id[]"></<input>
+                        </div>
                         
-                    </tr>
-                    <?php endforeach ?>
-                <?php endif ?>
+                    
+                      </div>
+                    </div>
+
+            <?php endforeach ?>
+          <?php endif ?>
                            
-          
-            </tbody>
-          </table>
+        </div>
 
 
 

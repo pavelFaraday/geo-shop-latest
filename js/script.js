@@ -19,7 +19,7 @@
        if($('input:checkbox:checked').length > 0){
           $('input:checkbox:checked').each(function(){
               dataArr.push($(this).attr('id'));
-              $(this).closest('tr').remove();     // აქ class უნდა ჩაჯდეს მაგ: .class
+              $(this).closest('.ajax-del').remove();     // აქ class უნდა ჩაჯდეს მაგ: .class
           });
           sendResponse(dataArr)
        }else{
