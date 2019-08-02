@@ -1,6 +1,20 @@
 <?php 
 // DB connection
 include("delete.php"); 
+require("inc/db.php");
+
+
+try {
+    // Create sql statement
+    $sql = "SELECT * FROM products";
+    $result = $conn->query($sql);
+
+    // error output
+} catch (Exception $e) {
+    echo "Error " . $e->getMessage(); 
+    exit();
+}
+
 
 
 ?>
@@ -26,10 +40,10 @@ include("delete.php");
           <div class="row">
             <div class="col-md-12">
               <h5 class="card-title float-left">All Products</h5>
-                <a href="create.php" class="btn btn-success float-right mb-3"><i class="fa fa-plus"></i> Add New</a>
+                <a href="create.php" class="btn btn-success float-right mb-3"> Add New</a>
 
                 <!-- 6) -->
-                <button type="button" class="btn btn-danger float-right mr-3" id="delete"  onclick="return confirm('Are you sure?')" >Mass Delete</button>
+                <button type="button" class="btn btn-danger float-right mr-3" id="delete"  onclick="return confirm('Are you sure?')">Mass Delete</button>
 
             </div>
           </div>
@@ -52,31 +66,33 @@ include("delete.php");
                 </thead>
             <tbody>
                 
-                <?php while($row  = mysqli_fetch_array($userObj)){ ?>
+            <?php if ($result->rowCount() > 0) : ?>
+                <?php foreach ($result as $product) : ?>
                     
                     <tr>
                         <td>
-                            <input class="checkbox" type="checkbox" id="<?php echo htmlspecialchars ($row['id']) ?>" name="id[]">
+                            <input class="checkbox" type="checkbox" id="<?php echo htmlspecialchars ($product['id']) ?>" name="id[]">
                         </td>
 
-                        <td><?= ($row['barcode'])?></td>
-                        <td><?= htmlspecialchars ($row['name'])?></td>
-                        <td>$<?= number_format ($row['price'], 2) ?></td>
+                        <td><?= ($product['barcode'])?></td>
+                        <td><?= htmlspecialchars ($product['name'])?></td>
+                        <td>$<?= number_format ($product['price'], 2) ?></td>
 
                         <td>
-                            <?= htmlspecialchars ($row['weight']) ?>
-                            <?= htmlspecialchars ($row['size']) ?>
-                            <?= htmlspecialchars ($row['height']) ?><?= htmlspecialchars ($row['width']) ?><?= htmlspecialchars ($row['length']) ?>
+                            <?= htmlspecialchars ($product['weight']) ?>
+                            <?= htmlspecialchars ($product['size']) ?>
+                            <?= htmlspecialchars ($product['height']) ?><?= htmlspecialchars ($product['width']) ?><?= htmlspecialchars ($product['length']) ?>
                         </td>
 
                         <td>
-                            <a href="#"><img src="<?= $row['image'] ?>" height="auto" width="100"  alt="<?= $row['name'] ?> class="card-img-top"></a>
+                            <a href="#"><img src="<?= $product['image'] ?>" height="auto" width="100"  alt="<?= $product['name'] ?> class="card-img-top"></a>
                         </td>
 
                         
                     </tr>
-
-                <?php } ?>             
+                    <?php endforeach ?>
+                <?php endif ?>
+                           
           
             </tbody>
           </table>

@@ -26,7 +26,7 @@
         <!-- Create Form -->
         <div class="card border-danger">
             <div class="card-header bg-danger text-white">
-                <strong><i class="fa fa-plus"></i> Add New Product</strong>
+                <strong> Add New Product</strong>
             </div>
             <div class="card-body">
             <form action="add.php" method="post">
@@ -97,7 +97,7 @@
                        </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i> Save</button>
+                    <button type="submit" class="btn btn-success"> Save</button>
                 </form>
             </div>
         </div>

@@ -3,7 +3,6 @@
 
 $connection  = mysqli_connect('localhost','root', '' , 'geo_phones'); 
 	
-
 $userObj  = mysqli_query($connection , 'SELECT * FROM `products`');
 
 
@@ -17,6 +16,8 @@ if(isset($_POST['data'])){
 	}
 	echo 'record deleted successfully';
 }
+
+
 
 ?>
 
