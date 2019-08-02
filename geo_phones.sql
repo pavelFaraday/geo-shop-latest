@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2019 at 09:17 PM
+-- Generation Time: Aug 02, 2019 at 08:02 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `products` (
   `id` int(10) NOT NULL,
-  `barcode` varchar(100) NOT NULL,
+  `barcode` varchar(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` float NOT NULL,
-  `size` int(10) DEFAULT '0',
-  `height` int(10) DEFAULT '0',
-  `width` int(10) DEFAULT '0',
-  `length` int(10) DEFAULT '0',
-  `weight` int(10) DEFAULT '0',
+  `size` varchar(10) DEFAULT NULL,
+  `height` varchar(10) DEFAULT NULL,
+  `width` varchar(10) DEFAULT NULL,
+  `length` varchar(10) DEFAULT NULL,
+  `weight` varchar(10) DEFAULT NULL,
   `image` varchar(1024) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46,13 +46,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `barcode`, `name`, `price`, `size`, `height`, `width`, `length`, `weight`, `image`) VALUES
-(83, '7777', 'iojhbiu', 4, 7, 0, 0, 0, 4, ''),
-(84, '7777', 'iojhbiu', 7, 4, 0, 0, 0, 8, ''),
-(86, 'kikimimi', 'kimimi', 9, 5, 0, 0, 0, 9, ''),
-(88, '7777', 'o9999', 8, 0, 0, 0, 0, 9, ''),
-(89, 'lknkklj jk', '4frf', 33, NULL, 0, 0, 0, 3, ''),
-(90, 'lknkklj jk', 'jnnuin', 4, NULL, 0, 0, 0, 3, ''),
-(91, 'lknkklj jk', 'o9999', 4, NULL, 0, 0, 0, 3, '');
+(190, 'SKU-5d4475', 'Home Alone (DVD)', 14, '120 MB', NULL, NULL, NULL, NULL, 'images\\products\\disc.jpg'),
+(191, 'SKU-5d4475', 'CSS Lessons', 17, NULL, NULL, NULL, NULL, '0.8 KG', 'images\\products\\book.jpg'),
+(192, 'SKU-5d4475', 'IKEA', 300, NULL, '200 x ', '300 x', '400 CM', NULL, 'images\\products\\furniture.jpg'),
+(193, 'SKU-5d4477', 'BedRoom', 400, NULL, '600 x', '700 x', '400 CM', NULL, 'images\\products\\furniture.jpg'),
+(194, 'SKU-5d4477', 'HTML', 20, NULL, NULL, NULL, NULL, '2 KG', 'images\\products\\book.jpg'),
+(198, 'SKU-5d4478', 'MAKAU (MDF)', 1200, NULL, '1200 x', '300 x', '500 CM', NULL, 'images\\products\\furniture.jpg'),
+(201, 'SKU-5d4479', 'DISK 2', 5, '1 GB', NULL, NULL, NULL, NULL, 'images\\products\\disc.jpg'),
+(202, 'SKU-5d4479', 'BOOK 2', 23, NULL, NULL, NULL, NULL, '13 KG', 'images\\products\\book.jpg');
 
 --
 -- Indexes for dumped tables
@@ -72,7 +73,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
