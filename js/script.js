@@ -18,7 +18,7 @@
        if($('input:checkbox:checked').length > 0){
           $('input:checkbox:checked').each(function(){
               dataArr.push($(this).attr('id'));
-              $(this).closest('tr').remove();
+              $(this).closest('tr').remove();   
           });
           sendResponse(dataArr)
        }else{
@@ -27,6 +27,9 @@
 
     });  
 
+
+
+    // for Mass Delete
 
     function sendResponse(dataArr){
         $.ajax({
@@ -43,6 +46,12 @@
     }
 
   });
+
+
+
+
+
+  // for special attribute with helpfull info
 
         function fetch_select (val){
             $.ajax({
