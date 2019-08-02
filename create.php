@@ -89,12 +89,19 @@
 
 
 
-
-
                     <div class="form-row">
                        <div class="form-group col-md-4">
                            <input type="text" class="form-control" name="image" id="image" placeholder="Image URL">
                        </div>
+
+                       <div class="bg-secondary col-md-3">
+                           <div class="text-center text-light"> Recommended Image size (PX): 500x300 </div>
+                       </div>
+                    </div>
+
+                    <div class="row">
+
+                    
                     </div>
                     
                     <button type="submit" class="btn btn-success"> Save</button>

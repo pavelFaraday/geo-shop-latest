@@ -57,25 +57,29 @@ try {
             <?php if ($result->rowCount() > 0) : ?>
                 <?php foreach ($result as $product) : ?>
 
-                    <div class="col-md-3 ajax-del">
-                      <div class="card">
+                    <div class="col-md-3 ajax-del"> <!-- Delete div with AJAX--> 
+                      <div class="card border-secondary mb-2">
                     
 
-                        <a href="#"><img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>" class="card-img-top"></a>
+                        <a href="#"><img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>" class="card-img-top img-fluid"></a>
 
-                        <div class="card-body text-center">
+                        
 
-                              <p class="card-text">#<?=$product  ['barcode'] ?></p>
+                        <div class="card-body bg-light text-center">
+
+                            
+                              <input type="checkbox"  class="float-left" id="<?php echo $product['id'] ?>" name="id[]"></<input>
+                              
+
+                              <p class="card-text mt-3">#<?=$product  ['barcode'] ?></p>
                               <h5 class="card-title text-danger font-weight-bold"><?= $product  ['name'] ?></h5>
                               <p>$<?= number_format($product  ['price'], 2) ?></p>
 
                               <p class="card-text"><?=$product ['weight'] ?></p>
                               <p class="card-text"><?=$product ['size'] ?></p>
-                              <p class="card-text"><?=$product ['height'] ?></p>
-                              <p class="card-text"><?=$product ['width'] ?></p>
-                              <p class="card-text"><?=$product ['length'] ?></p> 
+                              <p class="card-text"><?=$product ['height'] ?> <?=$product ['width'] ?> <?=$product ['length'] ?> </p>
 
-                              <input class="checkbox m-2" type="checkbox" id="<?php echo $product['id'] ?>" name="id[]"></<input>
+
                         </div>
                         
                     
@@ -94,7 +98,7 @@ try {
   
         </div>
       </div>
-      <!-- End Table Product -->
+      <!-- End Product -->
       <br>
 <?php include("inc/footer.php") ?>   <!-- Footer -->
 
